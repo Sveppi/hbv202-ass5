@@ -8,13 +8,10 @@ import org.junit.Test;
 public class IntStackTest {
 
     private IntStack stack;
-    private int pushpoptest;
 
     @Before
     public void constructNewStackTestObjects() {
         stack = new IntStack();
-
-        pushpoptest = 7;
     }
     
     @Test
@@ -42,8 +39,8 @@ public class IntStackTest {
 
     @Test
     public void testPopReturnsPushedValue() {
-        stack.push(pushpoptest);
-        assertEquals(pushpoptest, stack.pop());
+        stack.push(7);
+        assertEquals(7, stack.pop());
     }
 
     @Test (expected=ArrayIndexOutOfBoundsException.class)
