@@ -24,9 +24,7 @@ public class IntStackTest {
 
     @Test
     public void testNewStackIsFull() {
-        int cap = stack.getCapacity();
-
-        for (int i = 0; i < cap; i++) {
+        for (int i = 0; i < stack.getCapacity(); i++) {
             stack.push(i);
         }
 
@@ -35,9 +33,7 @@ public class IntStackTest {
 
     @Test
     public void testNewStackIsNotFullOneOff() {
-        int cap = stack.getCapacity();
-
-        for (int i = 0; i < cap-1; i++) {
+        for (int i = 0; i < stack.getCapacity()-1; i++) {
             stack.push(i);
         }
 
@@ -48,6 +44,24 @@ public class IntStackTest {
     public void testPopReturnsPushedValue() {
         stack.push(pushpoptest);
         assertEquals(pushpoptest, stack.pop());
+    }
+
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testEmptyStackPop() {
+        if(stack.isEmpty()) {
+            stack.pop();
+        }
+    }
+
+    @Test (expected=ArrayIndexOutOfBoundsException.class)
+    public void testFullStackPush() {
+        for (int i = 0; i < stack.getCapacity(); i++) {
+            stack.push(i);
+        }
+        
+        if(stack.isFull()) {
+            stack.push(11);
+        }
     }
 
 
