@@ -28,7 +28,17 @@ public class IntStackTest {
         }
 
         assertTrue(stack.isFull());
-        
+    }
+
+    @Test
+    public void testNewStackIsNotFullOneOff() {
+        int cap = stack.getCapacity();
+
+        for (int i = 0; i < cap-1; i++) {
+            stack.push(i);
+        }
+
+        assertFalse(stack.isFull());
     }
 
 }
