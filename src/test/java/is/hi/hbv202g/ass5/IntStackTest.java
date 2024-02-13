@@ -48,9 +48,7 @@ public class IntStackTest {
 
     @Test (expected=ArrayIndexOutOfBoundsException.class)
     public void testEmptyStackPop() {
-        if(stack.isEmpty()) {
             stack.pop();
-        }
     }
 
     @Test (expected=ArrayIndexOutOfBoundsException.class)
@@ -59,10 +57,20 @@ public class IntStackTest {
             stack.push(i);
         }
         
-        if(stack.isFull()) {
-            stack.push(11);
-        }
+        stack.push(11);
     }
 
+    @Test
+    public void testNewStackIsEmpty() {
+        assertTrue(stack.isEmpty());
+    }
 
+    @Test
+    public void testNewStackIsNotEmpty() {
+        for (int i = 0; i < stack.getCapacity(); i++) {
+            stack.push(i);
+        }
+
+        assertFalse(stack.isEmpty());
+    }
 }
